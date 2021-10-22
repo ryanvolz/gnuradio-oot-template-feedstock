@@ -43,7 +43,8 @@ requirements:
     - pkg-config
 
   host:
-    # Add extra library dependencies here
+    # Add extra library dependencies (or remove them) here
+    - boost-cpp
     - gmp  # [linux]
     - gnuradio-core
     - pip  # [win]
@@ -52,7 +53,7 @@ requirements:
     - volk
 
   run:
-    # Add extra runtime dependencies here
+    # Add extra runtime dependencies (or remove them) here
     - numpy
     - python
 
