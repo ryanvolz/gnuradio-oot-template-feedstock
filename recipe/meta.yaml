@@ -49,14 +49,12 @@ requirements:
     - python
     - swig
     - volk
-    # Add/remove library dependencies here (below needed for gr-paint)
-    - boost-cpp
+    # Add/remove library dependencies here
 
   run:
     - numpy
     - python
     # Add/remove runtime dependencies here (below needed for gr-paint)
-    - boost-cpp
     - pillow
 
 test:
