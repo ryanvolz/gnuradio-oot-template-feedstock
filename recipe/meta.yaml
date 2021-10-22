@@ -1,0 +1,111 @@
+# Note: there are many handy hints in comments in this example -- remove them when you've finalized your recipe
+
+# Jinja variables help maintain the recipe by keeping repeated info in one place.
+# Fill in the github information or set the package name and URL manually!
+{% set github_user_or_org = "drmpeg" %}
+{% set github_repo = "gr-paint" %}
+# A version number is REQUIRED for sanity. Tag and release if necessary!
+{% set version = "0.0.1a" %}
+# OOT module packages conventionally start with "gnuradio-" before the OOT name.
+{% set oot_name = github_repo|replace("gr-", "") %}
+{% set name = "gnuradio-" + oot_name %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  ##  To build a package from source in a local directory, use a path:
+  # path: ../{{ github_repo }}
+  ##  If getting the source from GitHub, use releases if available
+  ##  (and adjust the url as necessary):
+  # url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/releases/download/{{ version }}/{{ github_repo }}-{{ version }}.tar.gz
+  ##  and otherwise fall back to versioned archive:
+  # url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/archive/v{{ version }}.tar.gz
+  ##  or an archive based on a commit hash:
+  url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/archive/9967e997b585060492c6837d180353254c1a1c47.tar.gz
+  ##  sha256 is the preferred checksum -- you can get it for a file with:
+  ##   `openssl sha256 <file name>`.
+  ##  You may need the openssl package, available on conda-forge:
+  ##   `conda install openssl -c conda-forge``
+  sha256: a11efd09d2d0cf8b6edbea1736a1f728505163559bc6224959240dfac033ba99
+
+build:
+  number: 0
+
+requirements:
+  build:
+    # Add extra build tool dependencies here
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake
+    - ninja
+    - pkg-config
+
+  host:
+    # Add extra library dependencies here
+    - gmp  # [linux]
+    - gnuradio-core
+    - pip  # [win]
+    - python
+    - swig
+    - volk
+
+  run:
+    # Add extra runtime dependencies here
+    - numpy
+    - python
+
+test:
+  commands:
+    # Add a list of commands to run to check that the package works. Examples below.
+
+    ## verify that commands run
+    #- COMMAND --help
+
+    # verify that (some) headers get installed
+    - test -f $PREFIX/include/{{ oot_name }}/api.h  # [not win]
+    - if not exist %PREFIX%\\Library\\include\\{{ oot_name }}\\api.h exit 1  # [win]
+
+    # verify that libraries get installed
+    - test -f $PREFIX/lib/lib{{ name }}${SHLIB_EXT}  # [not win]
+    - if not exist %PREFIX%\\Library\\bin\\{{ name }}.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\{{ name }}.lib exit 1  # [win]
+
+    ## verify that (some) GRC blocks get installed
+    #{% set blocks = ["LIST", "OF", "GRC", "BLOCK", "NAMES"] %}
+    #{% for block in blocks %}
+    #- test -f $PREFIX/share/gnuradio/grc/blocks/{{ block }}.block.yml  # [not win]
+    #- if not exist %PREFIX%\\Library\\share\\gnuradio\\grc\\blocks\\{{ block }}.block.yml exit 1  # [win]
+    #{% endfor %}
+
+  imports:
+    # verify that the python module imports
+    - {{ oot_name }}
+
+about:
+  home: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
+  # Remember to specify the license variants for BSD, Apache, GPL, and LGPL.
+  # Use the SPDX identifier, e.g: GPL-2.0-only instead of GNU General Public License version 2.0
+  # See https://spdx.org/licenses/
+  license: GPL-3.0-or-later
+  # The license_family, i.e. "BSD" if license is "BSD-3-Clause". (optional)
+  license_family: GPL
+  # It is strongly encouraged to include a license file in the package,
+  # (even if the license doesn't require it) using the license_file entry.
+  # See https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#license-file
+  license_file: COPYING
+  summary: Template package of a GNU Radio module.
+  # The remaining entries in this section are optional, but recommended.
+  description: >
+    Template package of a GNU Radio module. This example builds a package
+    for gr-paint, but you can modify it to build any OOT module!
+  doc_url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
+  dev_url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
+
+extra:
+  recipe-maintainers:
+    # GitHub IDs for maintainers of the recipe.
+    # Always check with the people listed below if they are OK becoming maintainers of the recipe. (There will be spam!)
+    - LisaSimpson
+    - LandoCalrissian
