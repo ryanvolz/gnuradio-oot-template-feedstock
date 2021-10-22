@@ -35,27 +35,28 @@ build:
 
 requirements:
   build:
-    # Add extra build tool dependencies here
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
     - pkg-config
+    # Add extra build tool dependencies here
 
   host:
-    # Add extra library dependencies (or remove them) here
-    - boost-cpp
     - gmp  # [linux]
     - gnuradio-core
     - pip  # [win]
     - pybind11
     - python
     - volk
+    # Add/remove library dependencies here (below needed for gr-paint)
+    - boost-cpp
 
   run:
-    # Add extra runtime dependencies (or remove them) here
     - numpy
     - python
+    # Add/remove runtime dependencies here (below needed for gr-paint)
+    - pillow
 
 test:
   commands:
