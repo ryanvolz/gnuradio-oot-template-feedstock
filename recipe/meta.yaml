@@ -23,12 +23,12 @@ source:
   ##  and otherwise fall back to versioned archive:
   # url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/archive/v{{ version }}.tar.gz
   ##  or an archive based on a commit hash:
-  url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/archive/9967e997b585060492c6837d180353254c1a1c47.tar.gz
+  url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}/archive/24765f98ed6d840765071714a5765b43f474608f.tar.gz
   ##  sha256 is the preferred checksum -- you can get it for a file with:
   ##   `openssl sha256 <file name>`.
   ##  You may need the openssl package, available on conda-forge:
   ##   `conda install openssl -c conda-forge``
-  sha256: a11efd09d2d0cf8b6edbea1736a1f728505163559bc6224959240dfac033ba99
+  sha256: 8928cd02f521d4cb65d90ff9b92cd0fe30011ddffcb3f71dc35b288327dad7d6
 
 build:
   number: 0
@@ -47,8 +47,8 @@ requirements:
     - gmp  # [linux]
     - gnuradio-core
     - pip  # [win]
+    - pybind11
     - python
-    - swig
     - volk
 
   run:
