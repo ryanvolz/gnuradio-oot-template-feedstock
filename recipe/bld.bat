@@ -22,3 +22,7 @@ if errorlevel 1 exit 1
 :: install
 cmake --build . --config Release --target install
 if errorlevel 1 exit 1
+
+:: test
+ctest --build-config Release --output-on-failure --timeout 120 -j%CPU_COUNT%
+if errorlevel 1 exit 1
