@@ -3,4 +3,4 @@ channel_targets:
 
 # pin to GNU Radio 3.8 for this branch
 gnuradio_core:
-  - 3.8
+  - 3.8.*
