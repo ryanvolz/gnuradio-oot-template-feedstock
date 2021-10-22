@@ -99,7 +99,8 @@ about:
   # The remaining entries in this section are optional, but recommended.
   description: >
     Template package of a GNU Radio module. This example builds a package
-    for gr-paint, but you can modify it to build any OOT module!
+    for gr-paint. You can modify the files in the 'recipe' directory and
+    'conda-forge.yml' to build any OOT module!
   doc_url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
   dev_url: https://github.com/{{ github_user_or_org }}/{{ github_repo }}
 
