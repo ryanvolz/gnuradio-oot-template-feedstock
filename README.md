@@ -13,7 +13,7 @@ Development: https://github.com/drmpeg/gr-paint
 
 Documentation: https://github.com/drmpeg/gr-paint
 
-Template package of a GNU Radio module. This example builds a package for gr-paint, but you can modify it to build any OOT module!
+Template package of a GNU Radio module. This example builds a package for gr-paint. You can modify the files in the 'recipe' directory and 'conda-forge.yml' to build any OOT module!
 
 
 Current build status
