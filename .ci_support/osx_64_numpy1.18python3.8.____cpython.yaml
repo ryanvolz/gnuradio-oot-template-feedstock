@@ -16,6 +16,8 @@ gnuradio_core:
 - 3.8.*
 macos_machine:
 - x86_64-apple-darwin13.4.0
+numpy:
+- '1.18'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -29,3 +31,5 @@ volk:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - python
+  - numpy
