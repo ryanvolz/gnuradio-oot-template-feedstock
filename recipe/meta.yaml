@@ -47,6 +47,7 @@ requirements:
     - gnuradio-core
     - pip  # [win]
     - python
+    - numpy
     - swig
     - volk
     # Add/remove library dependencies here
