@@ -7,7 +7,9 @@ channel_targets:
 cxx_compiler:
 - vs2017
 gnuradio_core:
-- 3.9.4
+- 3.9.5
+numpy:
+- '1.19'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -18,3 +20,6 @@ target_platform:
 - win-64
 volk:
 - '2.5'
+zip_keys:
+- - python
+  - numpy
