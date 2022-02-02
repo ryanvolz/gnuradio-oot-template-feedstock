@@ -31,6 +31,7 @@ provider:
   linux: github_actions
   osx: github_actions
   win: github_actions
+upload_on_branch: rendered-maint-3.8
 # The following keys are only for filling in the README. Change your actual
 # upload channel target in recipe/conda_build_config.yaml
 channels:
