@@ -2,8 +2,8 @@ setlocal EnableDelayedExpansion
 @echo on
 
 :: Make a build folder and change to it
-mkdir build
-cd build
+cmake -E make_directory buildconda
+cd buildconda
 
 :: configure
 cmake -G "Ninja" ^
