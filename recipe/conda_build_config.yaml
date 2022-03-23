@@ -1,3 +1,5 @@
+# this is the channel and label where packages will be uploaded to if enabled
+# (see ../README.md)
 channel_targets:
   - YOUR_ANACONDA_CHANNEL main
 
